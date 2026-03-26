@@ -7,7 +7,7 @@ import { usePuterStore } from "~/lib/puter";
 
 export const meta = () => ([
     {title: 'Resumify | Review'},
-    {name: 'description', content: 'Detail overview of your resume'},
+    {name: 'description', content: 'Detailed overview of your resume'},
 ])
 
 const Resume = () => {
@@ -65,7 +65,7 @@ const Resume = () => {
                 {imageUrl && resumeUrl && (
                     <div className="animate-in fade-in duration-500 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit">
                         <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
-                            <img src={imageUrl} className="w-full h-full obje rounded-2xl"
+                            <img src={imageUrl} className="w-full h-full object-contain rounded-2xl"
                             title="resume"
                             />
                         </a>
@@ -78,7 +78,7 @@ const Resume = () => {
                     {feedback ? (
                         <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
                             <Summary feedback = {feedback} />
-                            <ATS score = {feedback.overallScore || 0} suggestions = {feedback ?. ATS?.tips || []} />
+                            <ATS score = {feedback.overallScore || 0} suggestions = {feedback?.ATS?.tips || []} />
                             <Details feedback = {feedback} />
                         </div>
                     ) : (
