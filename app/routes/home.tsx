@@ -9,7 +9,7 @@ import { useEffect } from "react";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Resumify" },
-    { name: "description", content: "Smart feebback for your dream job!" },
+    { name: "description", content: "Smart feedback for your dream job!" },
   ];
 }
 

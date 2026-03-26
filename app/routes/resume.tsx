@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router"
 import ATS from "~/components/ATS";
+import Details from "~/components/Details";
 import Summary from "~/components/Summary";
 import { usePuterStore } from "~/lib/puter";
 
@@ -17,6 +18,7 @@ const Resume = () => {
     const [feedback, setFeedback] = useState<Feedback | null>(null);
     const navigate = useNavigate();
 
+    
     useEffect(() => {
         if(!isLoading && !auth.isAuthenticated) navigate(`/auth?next=/resume/${id}`);
     }, [isLoading])
@@ -41,7 +43,7 @@ const Resume = () => {
             const imageUrl = URL.createObjectURL(imageBlob);
             setImageUrl(imageUrl);
 
-            setFeedback(data.Feedback);
+            setFeedback(data.feedback);
             console.log({resumeUrl, imageUrl, feedback: data.feedback});
 
         }
@@ -50,7 +52,7 @@ const Resume = () => {
     }, [id]);
 
   return (
-    <main className="pt-0!">
+    <main className="pt-0! bg-[url('/images/bg-main.svg')] bg-cover">
         <nav className="resume-nav">
             <Link to="/" className="back-button">
                 <img src="/icons/back.svg" alt="logo" className="w-2, h-2.5" />
@@ -76,9 +78,8 @@ const Resume = () => {
                     {feedback ? (
                         <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
                             <Summary feedback = {feedback} />
-                            <ATS score = {feedback.ATS.score || 0} suggestions = {feedback.ATS.tips || []} />
-
-                            <Details feedback= {feedback} />
+                            <ATS score = {feedback.overallScore || 0} suggestions = {feedback ?. ATS?.tips || []} />
+                            <Details feedback = {feedback} />
                         </div>
                     ) : (
                         <img src="/images/resume-scan-2.gif" className="w-full" />
