@@ -268,19 +268,37 @@ IMPORTANT:
 - give at least 2–3 tips per category
 - return ONLY JSON (no text)
 
+IMPORTANT SCORING RULES:
+- Be VERY STRICT while scoring
+- Do NOT give high scores easily.
+- If resume is average -> score should be between 40-60
+- If resume is bad -> score should be below 40
+- Only excellent resumes should get above 70
+- Penalize missing keywords, poor formatting, weak content
+- Do NOT try to be polite - be realistic and critical
+
+SCORING CRITERIA (STRICT):
+Calculate overallScore based on:
+1. Keyword Match wirh Job Description (30%)
+2. Skills Relevance (25%)
+3. Experience Quality (20%)
+4. Resume Structure & Formatting (15%)
+5. Tone & Clarity (10%)
+
+Each category must have DIFFERENT scores.
+
+DO NOT give same or similar scores to all categories.
+
+FINAL SCORE must vary based on quality:
+- Poor resume -> 20-40
+- Average -> 40-60
+- Good -> 60-75
+- Excellent -> 75-90
+
+Avoid default values like 45 or 50
+Score must be calculated, not guessed.
+
 Job title: ${jobTitle}
 Job description: ${jobDescription}
 `;
   
-  // `You are an expert in ATS (Applicant Tracking System) and resume analysis.
-  // Please analyze and rate this resume and suggest how to improve it.
-  // The rating can be low if the resume is bad.
-  // Be thorough and detailed. Don't be afraid to point out any mistakes or areas for improvement.
-  // If there is a lot to improve, don't hesitate to give low scores. This is to help the user to improve their resume.
-  // If available, use the job description for the job user is applying to to give more detailed feedback.
-  // If provided, take the job description into consideration.
-  // The job title is: ${jobTitle}
-  // The job description is: ${jobDescription}
-  // Provide the feedback using the following format: ${AIResponseFormat}
-  // Return the analysis as a JSON object, without any other text and without the backticks.
-  // Do not include any other text or comments.`;
